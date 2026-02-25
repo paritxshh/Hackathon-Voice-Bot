@@ -96,7 +96,7 @@ export function buildElevenLabsConversationConfig(
   return {
     agent: {
       first_message: config.firstMessage || undefined,
-      language: "en",
+      language: "en", // en + Hinglish instructions in prompt for natural Hindi–English mix
       ...(Object.keys(dynamicVariablePlaceholders).length > 0 && {
         dynamic_variables: {
           dynamic_variable_placeholders: dynamicVariablePlaceholders,
@@ -111,7 +111,7 @@ export function buildElevenLabsConversationConfig(
             type: "system",
             name: "language_detection",
             description:
-              "Detect and switch to the user's language. Use when the user speaks in a different language (e.g. Hindi or English) so the agent responds in that language.",
+              "Detect the user's language. Prefer responding in Hinglish (natural mix of Hindi and English). Only switch to mostly Hindi or mostly English if the user clearly insists on one language.",
             params: { system_tool_type: "language_detection" },
           },
           {

@@ -18,7 +18,7 @@ const agents = [
 
 export default function AgentsTable() {
   return (
-    <div className="flex-1 overflow-auto p-6">
+    <div>
       <div className="rounded-lg border border-border overflow-hidden bg-surface">
         <table className="w-full text-left">
           <thead>

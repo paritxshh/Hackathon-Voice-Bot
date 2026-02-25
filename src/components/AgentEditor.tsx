@@ -35,7 +35,23 @@ const EDITOR_NAV = [
 ];
 
 const PROVIDERS = [{ value: "openai", label: "openai" }];
-const MODELS = [{ value: "gpt-4.1-mini", label: "gpt-4.1-mini" }];
+
+/** OpenAI chat models available in the dropdown (value = API/model id). */
+const OPENAI_MODELS = [
+  { value: "gpt-4o", label: "GPT-4o" },
+  { value: "gpt-4o-mini", label: "GPT-4o Mini" },
+  { value: "gpt-4.1-mini", label: "GPT-4.1 Mini" },
+  { value: "gpt-4.1-nano", label: "GPT-4.1 Nano" },
+  { value: "gpt-4.1", label: "GPT-4.1" },
+  { value: "gpt-4-turbo", label: "GPT-4 Turbo" },
+  { value: "gpt-4", label: "GPT-4" },
+  { value: "gpt-3.5-turbo", label: "GPT-3.5 Turbo" },
+  { value: "gpt-4o-2024-08-06", label: "GPT-4o (2024-08-06)" },
+  { value: "gpt-4o-2024-05-13", label: "GPT-4o (2024-05-13)" },
+  { value: "gpt-4o-mini-2024-07-18", label: "GPT-4o Mini (2024-07-18)" },
+];
+
+const MODELS = OPENAI_MODELS;
 
 const DEFAULT_PROMPT = `### Role:
 - You are Muskan, a warm, polite, and helpful AI customer support executive from Sleepy Cat.
@@ -49,10 +65,11 @@ const DEFAULT_PROMPT = `### Role:
 - Order details: \${order_details}
 - Is it a custom order: \${custom_order}
 
-### Language:
-- Early in the call, ask the customer: "Aap English me baat karna chahenge ya Hindi me?" (Would you like to speak in English or Hindi?)
-- Once they choose, use only that language for the rest of the conversation—English or Hindi accordingly.
-- If they don't specify, use the same language they use; prefer en-IN when unclear.`;
+### Language (Hinglish):
+- Speak in **Hinglish** throughout the call: a natural mix of Hindi and English, the way people commonly talk in India.
+- Use phrases like: "Aapka order deliver ho chuka hai", "Please confirm karein", "Koi problem nahi hai", "Thank you, aapka din shubh ho."
+- Do not use only pure English or only pure Hindi. Keep a friendly, natural Hinglish tone so the customer feels at ease.
+- If the customer switches to more Hindi or more English, match their level of mix but stay in Hinglish style.`;
 
 type AgentEditorProps = {
   agentId: string;
@@ -86,7 +103,7 @@ export default function AgentEditor({ agentId, agentSlug }: AgentEditorProps) {
   const [model, setModel] = useState("gpt-4.1-mini");
   const [temperature, setTemperature] = useState(0.7);
   const [firstMessage, setFirstMessage] = useState(
-    "Hi, I am Muskan calling from Sleepy Cat. Thank you for choosing us. Am I speaking with ${customer_name}?"
+    "Hi, main Muskan bol rahi hoon, Sleepy Cat se. Aapko choose karne ke liye thank you. Kya main ${customer_name} se baat kar rahi hoon?"
   );
   const [waitBeforeSpeaking, setWaitBeforeSpeaking] = useState(0);
   const [objective, setObjective] = useState(

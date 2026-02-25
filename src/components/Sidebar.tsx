@@ -36,7 +36,7 @@ const BUILD_ITEMS = [
 const CALL_ITEMS = [{ icon: Radio, label: "Campaigns", href: "#" }];
 
 const MONITOR_ITEMS = [
-  { icon: List, label: "Call Logs", href: "#" },
+  { icon: List, label: "Call Logs", href: "/call-logs" },
   { icon: FileStack, label: "Execution Logs", href: "#" },
   { icon: TrendingUp, label: "Insights", href: "#" },
   { icon: BarChart3, label: "Reports", href: "#" },
@@ -64,7 +64,11 @@ function NavSection({
       )}
       <div className="flex flex-col gap-0.5">
         {items.map(({ icon: Icon, label, href }) => {
-          const isActive = pathname === "/" && label === "Agents";
+          // On home ("/") only highlight Agents, not Overview
+          const isActive =
+            href !== "#" &&
+            pathname === href &&
+            (pathname !== "/" || label === "Agents");
           const content = (
             <>
               <Icon className="w-5 h-5 shrink-0" />
