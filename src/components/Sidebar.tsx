@@ -9,40 +9,15 @@ import {
   ArrowUpDown,
   Globe,
   Bot,
-  Play,
-  Zap,
-  Database,
-  Mic,
-  FileText,
-  Radio,
   List,
-  FileStack,
-  TrendingUp,
-  BarChart3,
-  CreditCard,
-  Settings,
 } from "lucide-react";
 
 const BUILD_ITEMS = [
   { icon: Globe, label: "Overview", href: "/" },
   { icon: Bot, label: "Agents", href: "/" },
-  { icon: Play, label: "Simulation", href: "#" },
-  { icon: Zap, label: "Tools", href: "#" },
-  { icon: Database, label: "Library", href: "#" },
-  { icon: Mic, label: "Voices", href: "#" },
-  { icon: FileText, label: "Numbers", href: "#" },
 ];
 
-const CALL_ITEMS = [{ icon: Radio, label: "Campaigns", href: "#" }];
-
-const MONITOR_ITEMS = [
-  { icon: List, label: "Call Logs", href: "/call-logs" },
-  { icon: FileStack, label: "Execution Logs", href: "#" },
-  { icon: TrendingUp, label: "Insights", href: "#" },
-  { icon: BarChart3, label: "Reports", href: "#" },
-  { icon: CreditCard, label: "Billing", href: "#" },
-  { icon: Settings, label: "Settings", href: "#" },
-];
+const MONITOR_ITEMS = [{ icon: List, label: "Call Logs", href: "/call-logs" }];
 
 function NavSection({
   title,
@@ -159,12 +134,6 @@ export default function Sidebar() {
         <NavSection
           title="Build"
           items={BUILD_ITEMS}
-          collapsed={collapsed}
-          pathname={pathname}
-        />
-        <NavSection
-          title="Call"
-          items={CALL_ITEMS}
           collapsed={collapsed}
           pathname={pathname}
         />
