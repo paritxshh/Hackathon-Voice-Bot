@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar: #1a1d21;
+  --surface: #22262b;
+  --header: #22262b;
+  --border: #2d333b;
+  --muted: #8b949e;
+  --pill: #373e47;
+  --pill-active: #388bfd;
+}
+
+body {
+  @apply bg-surface text-white antialiased;
+}
